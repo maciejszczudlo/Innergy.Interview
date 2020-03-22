@@ -17,9 +17,9 @@ namespace Innergy.Interview
             _load = load;
         }
 
-        public Task Process(string inputFilePath, string outputFilePath)
+        public async Task Process(string inputFilePath, string outputFilePath)
         {
-            var fileLines = _fileSystemSystemService.ReadLinesAsync(inputFilePath).Result;
+            var fileLines = await _fileSystemSystemService.ReadLinesAsync(inputFilePath);
 
             var inputModel = _extract.Process(fileLines);
 
@@ -27,9 +27,7 @@ namespace Innergy.Interview
 
             var outputData = _load.Process(outputModel);
 
-            var task = _fileSystemSystemService.WriteLinesAsync(outputFilePath, outputData);
-
-            return task;
+            await _fileSystemSystemService.WriteLinesAsync(outputFilePath, outputData);
 
         }
     }

@@ -12,10 +12,4 @@ namespace Innergy.Interview
         public int Total => Materials.Sum(m => m.Count);
 
     }
-
-    public class OutputMaterialModel
-    {
-        public string Id { get; set; }
-        public int Count { get; set; }
-    }
 }

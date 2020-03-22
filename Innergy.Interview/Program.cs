@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using Autofac;
 
@@ -18,6 +17,7 @@ namespace Innergy.Interview
                 using var scope = container.BeginLifetimeScope();
                 
                 var etlService = scope.Resolve<IEtlService>();
+
                 etlService.Process(input, output);
 
             }
@@ -45,9 +45,7 @@ namespace Innergy.Interview
         public static IContainer ConfigureContainer()
         {
             var builder = GetBuilder();
-
             var container = builder.Build();
-
             return container;
         }
     }

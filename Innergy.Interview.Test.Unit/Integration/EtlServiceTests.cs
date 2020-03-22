@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Autofac;
 using FluentAssertions;
+using Innergy.Interview.Test.Mocks;
+using Innergy.Interview.Test.Unit;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Innergy.Interview.Test.Unit
+namespace Innergy.Interview.Test.Integration
 {
     public class EtlServiceTests
     {

@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using FluentAssertions;
+using Innergy.Interview.Test.Mocks;
 using NUnit.Framework;
 
 namespace Innergy.Interview.Test.Unit

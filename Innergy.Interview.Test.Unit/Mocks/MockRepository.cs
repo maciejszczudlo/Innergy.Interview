@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace Innergy.Interview.Test.Unit
+namespace Innergy.Interview.Test.Mocks
 {
     public class MockRepository
     {
@@ -58,6 +59,45 @@ namespace Innergy.Interview.Test.Unit
                 "COM-123908: 11"
             };
             return data;
+        }
+
+        public static InputDataModel CreateInput(string materialId, params object[] magazineData)
+        {
+            var input = new InputDataModel
+            {
+                MaterialId = materialId,
+                Magazines = new List<MagazineInputModel>()
+            };
+
+            for (var i = 0; i < magazineData.Length; i += 2)
+            {
+                var magazineId = (string)magazineData[i];
+                var count = (int) magazineData[i + 1];
+                input.Magazines.Add(new MagazineInputModel {Id = magazineId, Count = count});
+            }
+
+            return input;
+        }
+
+
+
+        public static OutputDataModel CreateOutput(string magazineId)
+        {
+            var output = new OutputDataModel
+            {
+                MagazineId = magazineId
+                 
+            };
+
+            return output;
+        }
+
+     
+
+        public static List<OutputDataModel> CreateOutputs(params string[] magazineIds)
+        {
+
+            return magazineIds.Select(CreateOutput).ToList();
         }
 
     }
